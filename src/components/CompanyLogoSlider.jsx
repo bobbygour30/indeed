@@ -6,13 +6,13 @@ import assets from "../assets/assets"; // Your logo images
 
 // Replace these with your actual logo paths
 const logos = [
-  assets.logoGrow,
-  assets.logoAbcdri,
-  assets.logoMexon,
-  assets.logoMoya,
-  assets.logoFrench,
-  assets.logoGoty,
-  assets.logoRrrow,
+  "https://indeedplateform.com/images/partners/page-logo-5.png",
+  "https://indeedplateform.com/images/partners/page-logo-6.png",
+  "https://indeedplateform.com/images/partners/page-logo-7.png",
+  "https://indeedplateform.com/images/partners/page-logo-1.png",
+  "https://indeedplateform.com/images/partners/page-logo-3.png",
+  "https://indeedplateform.com/images/partners/page-logo-2.png",
+  "https://indeedplateform.com/images/partners/page-logo-4.png",
 ];
 
 export default function CompanyLogoSlider() {

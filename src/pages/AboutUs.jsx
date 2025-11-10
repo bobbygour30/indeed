@@ -7,6 +7,7 @@ import JobFitSection from "../components/JobFitSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import JobOpportunitiesCTA from "../components/JobOpportunitiesCTA.jsx";
 import assets from "../assets/assets.js";
+import CompanyLogoSlider from "../components/CompanyLogoSlider.jsx";
 
 // Floating animation for icons
 const floatAnimation = {
@@ -273,6 +274,7 @@ export default function AboutUs() {
       <HowItWorks />
       <JobFitSection/>
       <TestimonialsSection />
+      <CompanyLogoSlider />
       <JobOpportunitiesCTA />
     </div>
   );
