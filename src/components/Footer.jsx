@@ -19,7 +19,7 @@ export default function IndeedFooter() {
           />
           <p className="text-xs sm:text-sm text-gray-500">Need help? 24/7</p>
           <p className="text-base sm:text-lg font-semibold text-gray-900 mb-2">
-            support@indeedplateform.com
+            support@indeedplanet.com
           </p>
           <p className="text-gray-600 mb-4 text-sm leading-relaxed">
             Job Searching Just Got Easy. Use Jobtex to run a hiring site and earn money in the process!
