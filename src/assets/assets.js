@@ -12,6 +12,7 @@ import logo4 from "./Logo-4.png"
 import logo5 from "./Logo-5.png"
 import map from "./map.png"
 import appStore from "./btn4.png"
+import qr from "./qr.jpeg"
 
 
 const assets = {
@@ -28,7 +29,8 @@ const assets = {
     logo4,
     logo5,
     map,
-    appStore
+    appStore,
+    qr
 }
 
 export default assets
