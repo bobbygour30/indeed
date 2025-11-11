@@ -114,7 +114,15 @@ const Navbar = () => {
 
           <NavItem label="Registration" to="/payment-details" onClick={closeMobileMenu} active={isActive("/payment-details")} />
           <NavItem label="About Us" to="/about-us" onClick={closeMobileMenu} active={isActive("/about-us")} />
-          <NavItem label="Job Code" to="/job-code" onClick={closeMobileMenu} active={isActive("/")} /> {/* Update if Job Code has a page */}
+          
+          {/* FIXED: Job Code active state */}
+          <NavItem 
+            label="Job Code" 
+            to="/job-code" 
+            onClick={closeMobileMenu} 
+            active={isActive("/job-code")} 
+          />
+
           <NavItem label="Contact Us" to="/contact" onClick={closeMobileMenu} active={isActive("/contact")} />
         </ul>
 
@@ -210,7 +218,15 @@ const Navbar = () => {
 
           <MobileNavItem label="Registration" to="/payment-details" onClick={closeMobileMenu} active={isActive("/payment-details")} />
           <MobileNavItem label="About Us" to="/about-us" onClick={closeMobileMenu} active={isActive("/about-us")} />
-          <MobileNavItem label="Job Code" to="/" onClick={closeMobileMenu} active={isActive("/")} />
+          
+          {/* FIXED: Job Code active state in mobile */}
+          <MobileNavItem 
+            label="Job Code" 
+            to="/job-code" 
+            onClick={closeMobileMenu} 
+            active={isActive("/job-code")} 
+          />
+
           <MobileNavItem label="Contact Us" to="/contact" onClick={closeMobileMenu} active={isActive("/contact")} />
           
           {/* Registration Button - Mobile */}
@@ -258,15 +274,20 @@ const DropdownItem = ({ label, to, onClick }) => (
   </li>
 );
 
-// Reusable Nav Item for Mobile
+// Reusable Nav Item for Mobile (Improved for navigation)
 const MobileNavItem = ({ label, to, onClick, active }) => (
   <li
-    className={`px-6 py-3 border-b border-gray-100 hover:bg-gray-50 transition cursor-pointer ${
+    className={`px-6 py-3 border-b border-gray-100 hover:bg-gray-50 transition ${
       active ? "text-[#008080] font-semibold" : ""
     }`}
-    onClick={onClick}
   >
-    <Link to={to}>{label}</Link>
+    <Link
+      to={to}
+      onClick={onClick}
+      className="block w-full"
+    >
+      {label}
+    </Link>
   </li>
 );
 
