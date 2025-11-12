@@ -144,7 +144,7 @@ export default function PasswordProtectedPage() {
 
       {/* Payment Section (QR removed) */}
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] p-6">
-        <div className="bg-white rounded-xl shadow-lg p-10 max-w-sm w-full text-center">
+        <div className="bg-white rounded-xl shadow-lg p-10 max-w-xl w-full text-center">
           <h2 className="text-2xl font-bold mb-8 text-gray-900">
             Interview Registration Cost
           </h2>
