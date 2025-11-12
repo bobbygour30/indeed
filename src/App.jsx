@@ -13,6 +13,7 @@ import RecruiterConnection from './pages/RecruiterConnection';
 import TopManagement from './pages/TopManagement';
 import JobCode from './pages/JobCode';
 import JobsPage from './pages/JobsPage';
+import Job2 from './pages/Job2';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/top-management" element={<TopManagement />} />
             <Route path="/job-code" element={<JobCode />} />
             <Route path="/jobs" element={<JobsPage />} />
+            <Route path="/job2" element={<Job2 />} />
           </Routes>
         </main>
         <IndeedFooter />
