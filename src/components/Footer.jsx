@@ -19,8 +19,8 @@ export default function IndeedFooter() {
         {/* ---------- COLUMN 1 ---------- */}
         <div className="flex flex-col max-w-[350px] flex-1 min-w-[250px]">
           <img src={assets.logo} alt="Indeed Logo" className="w-40 mb-7" />
-          <p className="text-sm text-gray-500 mb-1">Need help? 24/7</p>
-          <p className="text-base font-semibold text-gray-900 mb-4">
+          <p className="text-sm text-gray-500 mb-1 sm:ml-10">Need help? 24/7</p>
+          <p className="text-base font-semibold text-gray-900 mb-4 sm:ml-10">
             support@indeedplateform.com
           </p>
           <p className="text-sm leading-relaxed text-gray-600 mb-5">
