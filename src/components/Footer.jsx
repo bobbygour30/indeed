@@ -17,25 +17,28 @@ export default function IndeedFooter() {
       {/* ---------- TOP SECTION ---------- */}
       <div className="w-full max-w-[1600px] mx-auto flex flex-wrap justify-between gap-12 lg:gap-20 xl:gap-36">
         {/* ---------- COLUMN 1 ---------- */}
-        <div className="flex flex-col max-w-[350px] flex-1 min-w-[250px]">
-          <img src={assets.logo} alt="Indeed Logo" className="w-40 mb-7" />
-          <p className="text-sm text-gray-500 mb-1 sm:ml-10">Need help? 24/7</p>
-          <p className="text-base font-semibold text-gray-900 mb-4 sm:ml-10">
-            support@indeedplateform.com
-          </p>
-          <p className="text-sm leading-relaxed text-gray-600 mb-5">
-            Job Searching Just Got Easy. Use Jobtex to run a hiring site and earn
-            money in the process!
-          </p>
-          <div className="flex items-start">
-            <MapPin className="w-4 h-4 mt-1 text-teal-600 flex-shrink-0" />
-            <span className="ml-2 text-sm text-black leading-snug">
-              The Skyview 10, Hitech City Main Rd, Silpa Gram Craft Village,
-              <br />
-              Madhapur, Rai Durg, Hyderabad, Telangana 500081
-            </span>
-          </div>
-        </div>
+       <div className="flex flex-col max-w-[350px] flex-1 min-w-[250px]">
+  <img src={assets.logo} alt="Indeed Logo" className="w-40 mb-7" />
+
+  <p className="text-sm text-gray-500 mb-1 sm:ml-6">Need help? 24/7</p>
+  <p className="text-base font-semibold text-gray-900 mb-5 sm:ml-6">
+    support@indeedplateform.com
+  </p>
+
+  <p className="text-[15px] leading-relaxed text-[#555] mb-5 max-w-[310px] sm:w-56">
+    Job Searching Just Got Easy. Use Jobtex to run a hiring site and earn
+    money in the process!
+  </p>
+
+  <div className="flex items-start gap-2 mt-1 max-w-[320px] sm:w-56">
+    {/* <MapPin className="w-4 h-4 mt-[3px] text-teal-600 flex-shrink-0" /> */}
+    <span className="text-[14px] text-[#333] leading-[1.65]">
+      ⚲ The Skyview 10, Hitech City Main Rd, Silpa Gram Craft Village,
+      Madhapur, Rai Durg, Hyderabad, Telangana 500081
+    </span>
+  </div>
+</div>
+
 
         {/* ---------- COLUMN 2 ---------- */}
         <div className="flex flex-col min-w-[150px]">
@@ -86,8 +89,8 @@ export default function IndeedFooter() {
 
         {/* ---------- COLUMN 4 ---------- */}
         <div className="flex flex-col items-start md:items-center flex-1 min-w-[250px]">
-          <div className="flex flex-col items-start md:items-center">
-            <h3 className="font-normal text-gray-900 mb-4 text-base">
+          <div className="flex items-center justify-center">
+            <h3 className="font-normal text-gray-900 mb-7 text-sm">
               Follow Us:
             </h3>
             <div className="flex flex-wrap gap-4 mb-7">
@@ -98,7 +101,7 @@ export default function IndeedFooter() {
                     href="#"
                     className="bg-white border border-gray-200 w-8 h-8 rounded-full flex items-center justify-center text-gray-700 hover:text-white hover:bg-teal-600 transition-all"
                   >
-                    <Icon size={14} />
+                    <Icon size={17} />
                   </a>
                 )
               )}
