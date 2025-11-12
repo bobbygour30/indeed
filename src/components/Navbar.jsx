@@ -1,17 +1,26 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaTwitter,
+  FaPinterestP,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpenDesktop, setIsDropdownOpenDesktop] = useState(false); // Desktop hover
-  const [isDropdownOpenMobile, setIsDropdownOpenMobile] = useState(false);   // Mobile click
+  const [isDropdownOpenDesktop, setIsDropdownOpenDesktop] = useState(false);
+  const [isDropdownOpenMobile, setIsDropdownOpenMobile] = useState(false);
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Close desktop dropdown when clicking outside
+  // Close dropdown on outside click (desktop)
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -22,24 +31,23 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Desktop hover
+  // Hover behavior (desktop)
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsDropdownOpenDesktop(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsDropdownOpenDesktop(false);
-    }, 200);
+    timeoutRef.current = setTimeout(
+      () => setIsDropdownOpenDesktop(false),
+      200
+    );
   };
 
   // Mobile menu
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (!isMobileMenuOpen) {
-      setIsDropdownOpenMobile(false); // Reset mobile dropdown when opening menu
-    }
+    if (!isMobileMenuOpen) setIsDropdownOpenMobile(false);
   };
 
   const closeMobileMenu = () => {
@@ -47,16 +55,12 @@ const Navbar = () => {
     setIsDropdownOpenMobile(false);
   };
 
-  const toggleDropdownMobile = () => {
-    setIsDropdownOpenMobile(prev => !prev);
-  };
+  const toggleDropdownMobile = () =>
+    setIsDropdownOpenMobile((prev) => !prev);
 
-  // Navigate + close
   const closeAndNavigate = (to) => {
     closeMobileMenu();
-    setTimeout(() => {
-      navigate(to);
-    }, 150);
+    setTimeout(() => navigate(to), 150);
   };
 
   const isActive = (path) => location.pathname === path;
@@ -65,16 +69,19 @@ const Navbar = () => {
     <nav className="relative bg-white shadow-sm z-50">
       <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         {/* Logo */}
-        <div className="flex items-center">
-          <Link to="/">
-            <img className="w-20 sm:w-24" src={assets.logo} alt="Logo" />
-          </Link>
-        </div>
+        <Link to="/">
+          <img className="w-20 sm:w-24" src={assets.logo} alt="Logo" />
+        </Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center space-x-8 xl:space-x-10 text-black font-medium text-[17px]">
-          <NavItem label="Home" to="/" onClick={closeMobileMenu} active={isActive("/")} />
-          
+          <NavItem
+            label="Home"
+            to="/"
+            onClick={closeMobileMenu}
+            active={isActive("/")}
+          />
+
           <li
             className="relative"
             ref={dropdownRef}
@@ -88,7 +95,7 @@ const Navbar = () => {
                 width="14"
                 height="14"
                 fill="currentColor"
-                className={`bi bi-caret-down-fill transition-transform duration-200 ${
+                className={`transition-transform duration-200 ${
                   isDropdownOpenDesktop ? "rotate-180" : ""
                 }`}
                 viewBox="0 0 16 16"
@@ -105,18 +112,49 @@ const Navbar = () => {
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible -translate-y-2"
               }`}
-              style={{ minWidth: "200px" }}
             >
-              <DropdownItem label="Interview Id Service" to="/password-protected" onClick={closeMobileMenu} />
-              <DropdownItem label="Recruiter Connection" to="/recruiter-connection" onClick={closeMobileMenu} />
-              <DropdownItem label="Top Management" to="/top-management" onClick={closeMobileMenu} />
+              <DropdownItem
+                label="Interview Id Service"
+                to="/password-protected"
+                onClick={closeMobileMenu}
+              />
+              <DropdownItem
+                label="Recruiter Connection"
+                to="/recruiter-connection"
+                onClick={closeMobileMenu}
+              />
+              <DropdownItem
+                label="Top Management"
+                to="/top-management"
+                onClick={closeMobileMenu}
+              />
             </ul>
           </li>
 
-          <NavItem label="Registration" to="/payment-details" onClick={closeMobileMenu} active={isActive("/payment-details")} />
-          <NavItem label="About Us" to="/about-us" onClick={closeMobileMenu} active={isActive("/about-us")} />
-          <NavItem label="Job Code" to="/job-code" onClick={closeMobileMenu} active={isActive("/job-code")} />
-          <NavItem label="Contact Us" to="/contact" onClick={closeMobileMenu} active={isActive("/contact")} />
+          <NavItem
+            label="Registration"
+            to="/payment-details"
+            onClick={closeMobileMenu}
+            active={isActive("/payment-details")}
+          />
+          <NavItem
+            label="About Us"
+            to="/about-us"
+            onClick={closeMobileMenu}
+            active={isActive("/about-us")}
+          />
+          <NavItem
+            label="Job Code"
+            to="/job-code"
+            onClick={closeMobileMenu}
+            active={isActive("/job-code")}
+          />
+          <NavItem
+            label="Contact Us"
+            to="/contact"
+            onClick={closeMobileMenu}
+            active={isActive("/contact")}
+          />
         </ul>
 
         {/* Desktop Registration Button */}
@@ -141,77 +179,166 @@ const Navbar = () => {
             stroke="currentColor"
           >
             {isMobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Sidebar Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 ease-in-out overflow-hidden ${
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`fixed top-0 left-0 h-full w-[85%] max-w-[340px] bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <ul className="flex flex-col text-black font-medium text-[17px] py-2">
-          <MobileNavItem label="Home" to="/" onNavigate={closeAndNavigate} active={isActive("/")} />
-          
-          {/* Recruitment Services - Mobile */}
-          <li className="border-b border-gray-100">
-            <button
-              onClick={toggleDropdownMobile}
-              className="w-full px-6 py-3 flex items-center justify-between hover:bg-gray-50 transition"
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-4 border-b">
+          <img src={assets.logo} alt="Indeed Logo" className="w-28" />
+          <button onClick={closeMobileMenu} aria-label="Close menu">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
             >
-              <span>Recruitment Services</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                fill="currentColor"
-                className={`bi bi-caret-down-fill transition-transform duration-200 ${
-                  isDropdownOpenMobile ? "rotate-180" : ""
-                }`}
-                viewBox="0 0 16 16"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Scrollable Menu Content */}
+        <div className="overflow-y-auto h-full pb-6">
+          <ul className="flex flex-col text-black font-medium text-[17px]">
+            <MobileNavItem
+              label="Home"
+              to="/"
+              onNavigate={closeAndNavigate}
+              active={isActive("/")}
+            />
+
+            {/* Recruitment Dropdown */}
+            <li className="border-b border-gray-100">
+              <button
+                onClick={toggleDropdownMobile}
+                className="w-full px-6 py-3 flex items-center justify-between hover:bg-gray-50 transition"
               >
-                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592c.86 0 1.319 1.013.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0z" />
-              </svg>
-            </button>
+                <span
+                  className={isDropdownOpenMobile ? "text-[#008080]" : ""}
+                >
+                  Recruitment Services
+                </span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  fill="currentColor"
+                  className={`transition-transform duration-200 ${
+                    isDropdownOpenMobile ? "rotate-180 text-[#008080]" : ""
+                  }`}
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592c.86 0 1.319 1.013.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0z" />
+                </svg>
+              </button>
 
-            {/* Mobile Submenu */}
-            <ul
-              className={`bg-gray-50 transition-all duration-300 overflow-hidden ${
-                isDropdownOpenMobile ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              <MobileDropdownItem label="Interview Id Service" to="/password-protected" onNavigate={closeAndNavigate} />
-              <MobileDropdownItem label="Recruiter Connection" to="/recruiter-connection" onNavigate={closeAndNavigate} />
-              <MobileDropdownItem label="Top Management" to="/top-management" onNavigate={closeAndNavigate} />
-            </ul>
-          </li>
+              <ul
+                className={`bg-gray-50 transition-all duration-300 overflow-hidden ${
+                  isDropdownOpenMobile ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <MobileDropdownItem
+                  label="Interview Id Service"
+                  to="/password-protected"
+                  onNavigate={closeAndNavigate}
+                />
+                <MobileDropdownItem
+                  label="Recruiter Connection"
+                  to="/recruiter-connection"
+                  onNavigate={closeAndNavigate}
+                />
+                <MobileDropdownItem
+                  label="Top Management"
+                  to="/top-management"
+                  onNavigate={closeAndNavigate}
+                />
+              </ul>
+            </li>
 
-          <MobileNavItem label="Registration" to="/payment-details" onNavigate={closeAndNavigate} active={isActive("/payment-details")} />
-          <MobileNavItem label="About Us" to="/about-us" onNavigate={closeAndNavigate} active={isActive("/about-us")} />
-          <MobileNavItem label="Job Code" to="/job-code" onNavigate={closeAndNavigate} active={isActive("/job-code")} />
-          <MobileNavItem label="Contact Us" to="/contact" onNavigate={closeAndNavigate} active={isActive("/contact")} />
-          
-          {/* Mobile Registration Button */}
-          <li className="px-6 py-3">
-            <button
-              onClick={() => closeAndNavigate("/payment-details")}
-              className="block w-full text-center border border-[#008080] px-5 py-2 rounded-md text-[17px] font-semibold hover:bg-[#008080] hover:text-white transition duration-300"
-            >
-              Registration
-            </button>
-          </li>
-        </ul>
+            <MobileNavItem
+              label="Registration"
+              to="/payment-details"
+              onNavigate={closeAndNavigate}
+              active={isActive("/payment-details")}
+            />
+            <MobileNavItem
+              label="About Us"
+              to="/about-us"
+              onNavigate={closeAndNavigate}
+              active={isActive("/about-us")}
+            />
+            <MobileNavItem
+              label="Job Code"
+              to="/job-code"
+              onNavigate={closeAndNavigate}
+              active={isActive("/job-code")}
+            />
+            <MobileNavItem
+              label="Contact Us"
+              to="/contact"
+              onNavigate={closeAndNavigate}
+              active={isActive("/contact")}
+            />
+
+            {/* Registration Button */}
+            <li className="px-6 py-3">
+              <button
+                onClick={() => closeAndNavigate("/payment-details")}
+                className="block w-full text-center border border-[#008080] px-5 py-2 rounded-md text-[17px] font-semibold hover:bg-[#008080] hover:text-white transition duration-300"
+              >
+                Registration
+              </button>
+            </li>
+
+            {/* Contact + Social inside scrollable content */}
+            <li className="px-6 pt-4 pb-6 text-center border-t">
+              <p className="text-sm text-gray-500 mb-1">Need help? 24/7</p>
+              <p className="text-sm font-medium text-black mb-4">
+                support@indeedplateform.com
+              </p>
+              <div className="flex justify-center space-x-4 text-gray-600 text-lg">
+                <FaFacebookF className="hover:text-[#008080] cursor-pointer" />
+                <FaLinkedinIn className="hover:text-[#008080] cursor-pointer" />
+                <FaTwitter className="hover:text-[#008080] cursor-pointer" />
+                <FaPinterestP className="hover:text-[#008080] cursor-pointer" />
+                <FaInstagram className="hover:text-[#008080] cursor-pointer" />
+                <FaYoutube className="hover:text-[#008080] cursor-pointer" />
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );
 };
 
-// Desktop Nav Item
+// Helper Components
 const NavItem = ({ label, to, onClick, active }) => (
   <li className="relative group cursor-pointer" onClick={onClick}>
     <Link to={to} className={`block ${active ? "text-[#008080]" : ""}`}>
@@ -225,16 +352,17 @@ const NavItem = ({ label, to, onClick, active }) => (
   </li>
 );
 
-// Desktop Dropdown Item
 const DropdownItem = ({ label, to, onClick }) => (
-  <li className="px-4 py-3 text-[15px] text-gray-800 hover:bg-[#008080] hover:text-white transition-colors" onClick={onClick}>
+  <li
+    className="px-4 py-3 text-[15px] text-gray-800 hover:bg-[#008080] hover:text-white transition-colors"
+    onClick={onClick}
+  >
     <Link to={to} className="block w-full h-full">
       {label}
     </Link>
   </li>
 );
 
-// Mobile Nav Item
 const MobileNavItem = ({ label, to, onNavigate, active }) => {
   const handleClick = () => onNavigate(to);
   return (
@@ -250,7 +378,6 @@ const MobileNavItem = ({ label, to, onNavigate, active }) => {
   );
 };
 
-// Mobile Dropdown Item
 const MobileDropdownItem = ({ label, to, onNavigate }) => {
   const handleClick = () => onNavigate(to);
   return (
