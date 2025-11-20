@@ -18,11 +18,11 @@ export default function IndeedFooter() {
       <div className="w-full max-w-[1600px] mx-auto flex flex-wrap justify-between gap-12 lg:gap-20 xl:gap-36">
         {/* ---------- COLUMN 1 ---------- */}
        <div className="flex flex-col max-w-[350px] flex-1 min-w-[250px]">
-  <img src={assets.logo} alt="Indeed Logo" className="w-40 mb-7" />
+  <img src={assets.logo} alt="Indeed Logo" className="w-50 mb-7" />
 
   <p className="text-sm text-gray-500 mb-1 sm:ml-6">Need help? 24/7</p>
   <p className="text-base font-semibold text-gray-900 mb-5 sm:ml-6">
-    support@indeedplateform.com
+    support@indeedplanet.com
   </p>
 
   <p className="text-[15px] leading-relaxed text-[#555] mb-5 max-w-[310px] sm:w-56">
