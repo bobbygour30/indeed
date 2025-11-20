@@ -33,7 +33,7 @@ const ContactPage = () => {
               <Mail className="w-7 h-7 mr-4 mt-1 flex-shrink-0" />
               <div>
                 <h2 className="font-semibold text-lg">Email</h2>
-                <p className="break-all text-sm">support@indeedplateform.com</p>
+                <p className="break-all text-sm">support@indeedplanet.com</p>
               </div>
             </div>
 
